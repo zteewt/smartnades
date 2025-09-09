@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/global/css/header.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href=""><div class="logo">Logo</div></a>
+        <nav>
+            <a href="" class="nav-item" id="nades">Nades</a>
+            <a href="" class="nav-item" id="sets">Sets</a>
+            <a href="" class="nav-item" id="hltv">#1 HLTV Sets</a>
+            <a href="" class="nav-item" id="login">Log in</a>
+        </nav>
+    </header>
+
+    <main>
+            <aside class="filters-sidebar">
+                <form class="filters-form">
+                    <fieldset class="filters-group">
+                        <legend>Map</legend>
+                        <select name="map" id="map-select" class="filter-select">
+                            <option value="mirage">Mirage</option>
+                            <option value="inferno">Inferno</option>
+                            <option value="dust2">Dust II</option>
+                            <option value="ancient">Ancient</option>
+                            <option value="overpass">Overpass</option>
+                            <option value="train">Train</option>
+                            <option value="nuke">Nuke</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset class="filters-group">
+                        <div class="radio-group">
+                            <input type="radio" name="side" id="side-ct" value="ct">
+                            <label for="side-ct">CT</label>
+                            
+                            <input type="radio" name="side" id="side-t" value="t">
+                            <label for="side-t">T</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="filters-group">
+                       <div class="radio-group">
+                        <input type="radio" name="nade_type" id="nade-smoke" value="smoke">
+                        <label for="nade-smoke">Smoke</label>
+
+                        <input type="radio" name="nade_type" id="nade-flash" value="flash">
+                        <label for="nade-flash">Flash</label>
+
+                        <input type="radio" name="nade_type" id="nade-molotov" value="molotov">
+                        <label for="nade-molotov">Molotov</label>
+
+                        <input type="radio" name="nade_type" id="nade-he" value="he">
+                        <label for="nade-he">HE</label>
+                       </div> 
+                    </fieldset>
+
+                    <fieldset class="filters-group">
+                        <div class="radio-group">
+                            <input type="radio" name="timing" id="early-timing" value="early">
+                            <label for="early-timing">Early-timing</label>
+
+                            <input type="radio" name="timing" id="mid-timing" value="mid">
+                            <label for="mid-timing">Mid-timing</label>
+
+                            <input type="radio" name="timing" id="Jame-timing" value="Jame">
+                            <label for="Jame-timing">Jame-timing</label>
+                        </div>
+                    </fieldset>
+                </form>
+            </aside>
+    </main>
+</body>
+</html>
