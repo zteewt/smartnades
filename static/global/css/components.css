@@ -1,0 +1,60 @@
+/* Форма фильтров - вертикальный стек */
+.filters-form {
+    display: flex;
+    flex-direction: column; /* Элементы друг под другом */
+    gap: 40px;              /* Отступ между группами */
+    padding: 20px;          /* Воздух внутри сайдбара */
+}
+
+/* Каждая группа фильтров - карточка */
+.filters-group {
+    padding: 15px;
+    padding: 20px 15px 15px 15px;
+    margin-top: 15px; /* Место для legend */
+}
+
+
+/* Стили для select dropdown */
+.filter-select {
+    width: 100%;            /* На всю ширину родителя */
+    padding: 10px;          /* Удобно для клика */
+    background: #fff;    /* Белый фон */
+}
+
+/* Группы radio кнопок */
+.radio-group {
+    display: flex;
+    flex-direction:row; /* Кнопки друг под другом */
+    justify-content: space-between;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+
+/* Стили для меток radio кнопок */
+.radio-group label {
+    display: flex;
+    align-items: center;    /* Иконка и текст по центру */
+    gap: 8px;               /* Отступ между кружком и текстом */
+    cursor: pointer;        /* Курсор-рука при наведении */
+    padding: 10px 20px;         /* Удобная область для клика */
+    border-radius: 5px;     /* Легкое скругление */
+    transition: background-color 0.3s ease; /* Плавный ховер */
+    background-color: #fff;
+    flex: 1;
+    justify-content: center;
+}
+
+.radio-group label:hover {
+    background-color: #3c3c3c; /* Подсветка при наведении */
+    color: white;
+}
+

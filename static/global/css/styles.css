@@ -1,0 +1,15 @@
+@import url('layout.css');
+@import url('components.css');
+@import url('header.css');
+
+/* Глобальные сбросы и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Sansation', sans-serif;
+}
