@@ -2,8 +2,9 @@
 header {
     background-color: #2c2c2c;    /* Темнее body */
     padding: 0 30px;              /* Воздух слева-справа */
-    display: flex;                 /* Лого и nav в ряд */
-    justify-content: space-between; /* Лого слева, nav справа */
+    display: grid;                 /* Лого и nav в ряд */
+    justify-content: space-between;
+    grid-template-columns: 30% 1fr auto; /* Лого слева, nav справа */
     align-items: center;           /* По вертикали по центру */
 }
 
@@ -13,13 +14,14 @@ header {
     font-weight: bold;
     text-decoration: none;
     flex-shrink: 0;
+    justify-self: start;
 }
 
 /* Навигация */
 nav {
     display: flex;
     gap: 30px;                    /* Равные отступы между ссылками */
-    justify-content: flex-end;
+    justify-content: center;
     flex: 1;
 }
 
@@ -35,6 +37,28 @@ nav {
     max-width: 140px;
 }
 
+
 .nav-item:hover {
     background-color: #3c3c3c;    /* Подсветка при наведении */
+}
+
+
+.login {
+    justify-self: end; /* Прижимаем к правому краю */
+}
+
+.login a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Запрещаем перенос текста */
+    margin-left: 35px;
+    color: #fff;
+}
+
+.login a:hover {
+    background-color: #3c3c3c; /* Темнее при наведении */
 }

@@ -6,13 +6,24 @@
     padding: 20px;          /* Воздух внутри сайдбара */
 }
 
-/* Каждая группа фильтров - карточка */
+
 .filters-group {
     padding: 15px;
     padding: 20px 15px 15px 15px;
     margin-top: 15px; /* Место для legend */
+    position: relative;
 }
 
+.filters-group legend {
+    font-weight: bold;
+    padding: 0 10px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 14px;
+}
 
 /* Стили для select dropdown */
 .filter-select {
