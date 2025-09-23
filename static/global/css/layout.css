@@ -1,25 +1,32 @@
-/* Тело страницы стало flex-колонкой */
+/* Основной Grid контейнер */
 body {
-    display: flex;
-    flex-direction: column; /* Header сверху, main снизу */
-    min-height: 100vh;     /* Минимальная высота = весь экран */
+    display: grid;
+    grid-template-rows: 70px 1fr; /* Две строки: header и main */
+    grid-template-columns: 30% 1fr auto; /* Колонки как в header */ 
+    min-height: 100vh;
+    margin: 0;
 }
 
-/* Header всегда сверху и не сжимается */
+/* Header - первая строка, разбитая на 3 колонки */
 header {
-    flex-shrink: 0;    /* Не уменьшается */ 
-    height: 70px;      /* Фиксированная высота */
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #2c2c2c;
 }
 
-/* Основное содержание растягивается на всё оставшееся пространство */
+
+/* Main - вторая строка, разбитая на 2 колонки */
 main {
-    display: flex;      /* Дети (sidebar и minimap) в ряд */
-    flex: 1;            /* Занимает всё свободное место */
-    overflow: hidden;   /* Чтобы ничего не вылезало */
+    height: calc(100vh - 70px); /* Высота = экран минус header */
 }
 
-/* Сайдбар - 20% ширины */
+/* Сайдбар - первая колонка main */
 .filters-sidebar {
-    width: 30%;         /* Жёсткие 20% */
-    overflow-y: auto;   /* Скролл если контента много */
+    grid-column: 1;
+    overflow-y: auto;
 }
+
+/* Область для миникарты - вторая колонка main */
