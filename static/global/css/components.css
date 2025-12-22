@@ -1,3 +1,78 @@
+/* Стили для выпадающего списка карт */
+.map-select-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.map-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.map-toggle .arrow {
+    transition: transform 0.3s ease;
+    font-size: 18px;
+}
+
+.map-toggle.active .arrow {
+    transform: rotate(180deg);
+}
+
+.map-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 100;
+}
+
+.map-dropdown.active {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.map-option {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.map-option:hover {
+    background-color: #f0f0f0;
+}
+
+.map-option.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Скрываем оригинальный select */
+.filter-select {
+    display: none;
+}
+
+
+
 /* Форма фильтров - вертикальный стек */
 .filters-form {
     display: flex;
@@ -12,17 +87,23 @@
     padding: 20px 15px 15px 15px;
     margin-top: 15px; /* Место для legend */
     position: relative;
+    border: none;
 }
 
 .filters-group legend {
     font-weight: bold;
-    padding: 0 10px;
+    padding: 0 15px;
     position: absolute;
-    top: -10px;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 24px;
+    color: #fff;
+    background: linear-gradient(90deg, transparent, #555555, transparent);
+    background-color: #555555;
+    border-radius: 20px;
+    z-index: 10;
 }
 
 /* Стили для select dropdown */

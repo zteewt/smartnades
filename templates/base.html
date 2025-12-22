@@ -8,30 +8,48 @@
 </head>
 <body>
     <header>
-        <a href=""><div class="logo">Logo</div></a>
+        <a href=""><div class="logo"></div></a>
         <nav>
             <a href="" class="nav-item" id="nades">Nades</a>
-            <a href="" class="nav-item" id="setups">Setups</a>
-            <a href="" class="nav-item" id="hltv">#1 HLTV Sets</a>
+            <a href="" class="nav-item" id="setups">Strats</a>
+            <a href="" class="nav-item" id="hltv">Favourites</a>
+            <a href="" class="nav-item">Log in</a>
         </nav>
-        <div class="login"><a href="">Log in</a></div>
     </header>
 
     <main>
         <aside class="filters-sidebar">
             <form class="filters-form">
                 <fieldset class="filters-group">
-                    <legend>Map</legend>
-                    <select name="map" id="map-select" class="filter-select">
-                        <option value="none-map">-</option>
-                        <option value="mirage">Mirage</option>
-                        <option value="inferno">Inferno</option>
-                        <option value="dust2">Dust II</option>
-                        <option value="ancient">Ancient</option>
-                        <option value="overpass">Overpass</option>
-                        <option value="train">Train</option>
-                        <option value="nuke">Nuke</option>
-                    </select>
+                     <div class="map-select-container">
+                        <button type="button" class="map-toggle" id="map-toggle">
+                            <span>Map</span>
+                            <span class="arrow">▼</span>
+                        </button>
+
+                        <div class="map-dropdown" id="map-dropdown">
+                            <button type="button" class="map-option" data-value="none-map">-</button>
+                            <button type="button" class="map-option" data-value="mirage">Mirage</button>
+                            <button type="button" class="map-option" data-value="inferno">Inferno</button>
+                            <button type="button" class="map-option" data-value="dust2">Dust II</button>
+                            <button type="button" class="map-option" data-value="ancient">Ancient</button>
+                            <button type="button" class="map-option" data-value="overpass">Overpass</button>
+                            <button type="button" class="map-option" data-value="train">Train</button>
+                            <button type="button" class="map-option" data-value="nuke">Nuke</button>
+                        </div>
+                        
+                        <!-- Скрытый select для формы -->
+                        <select name="map" id="map-select" class="filter-select">
+                            <option value="none-map">-</option>
+                            <option value="mirage">Mirage</option>
+                            <option value="inferno">Inferno</option>
+                            <option value="dust2">Dust II</option>
+                            <option value="ancient">Ancient</option>
+                            <option value="overpass">Overpass</option>
+                            <option value="train">Train</option>
+                            <option value="nuke">Nuke</option>
+                        </select>
+                    </div>
                 </fieldset>
 
                 <fieldset class="filters-group">
@@ -76,5 +94,6 @@
             </form>
         </aside>
     </main>
+    <script src="../static/global/js/dropdown.js"></script>
 </body>
 </html>

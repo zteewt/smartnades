@@ -1,7 +1,7 @@
 /* Основной Grid контейнер */
 body {
     display: grid;
-    grid-template-rows: 70px 1fr; /* Две строки: header и main */
+    grid-template-rows: 125px 1fr; /* Две строки: header и main */
     grid-template-columns: 30% 1fr auto; /* Колонки как в header */ 
     min-height: 100vh;
     margin: 0;
@@ -14,7 +14,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 30px;
-    background-color: #2c2c2c;
+    background-color: #1E202E;
 }
 
 
@@ -27,6 +27,7 @@ main {
 .filters-sidebar {
     grid-column: 1;
     overflow-y: auto;
+    background-color: #555555;
 }
 
 /* Область для миникарты - вторая колонка main */
