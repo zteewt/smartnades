@@ -568,3 +568,123 @@
     text-decoration: none;
     color: #ffffff;
 }
+
+
+/* Поп-ап */
+
+
+.nade-modal {
+    position: fixed;
+    inset: 0;
+    display: none;              /* по умолчанию скрыта */
+    z-index: 1000;
+}
+
+.nade-modal--open {
+    display: block;
+}
+
+.nade-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.nade-modal__content {
+    position: relative;
+    max-width: 1200px;
+    height: 80vh;
+    margin: 40px auto;
+    background: #1E202E;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+.nade-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.nade-modal__layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1.4fr;   /* слева видео, справа текст */
+    grid-template-rows: 1fr;
+    height: 100%;
+}
+
+/* Левая часть */
+
+.nade-modal__video {
+    background: #111;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nade-modal__video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Правая часть: сверху текст, снизу мета */
+
+.nade-modal__right {
+    display: grid;
+    grid-template-rows: 1.2fr 0.8fr;  /* верхний и нижний блоки */
+    gap: 16px;
+    padding: 24px 24px 24px 0;
+    color: #fff;
+}
+
+.nade-modal__info {
+    background: #2A2C3A;
+    border-radius: 12px;
+    padding: 18px 20px;
+    overflow-y: auto;
+}
+
+.nade-modal__title {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.nade-modal__description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Мета-блок */
+
+.nade-modal__meta {
+    background: #2A2C3A;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+.nade-meta__item-label {
+    opacity: 0.7;
+    margin-right: 4px;
+}
+
+.nade-meta__item-value {
+    font-weight: 600;
+}
