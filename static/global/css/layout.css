@@ -2,7 +2,7 @@
 body {
     display: grid;
     grid-template-rows: 125px 1fr; /* Две строки: header и main */
-    grid-template-columns: 30% 1fr auto; /* Колонки как в header */ 
+    grid-template-columns: 45% 1fr auto; /* Колонки как в header */ 
     min-height: 100vh;
     margin: 0;
 }
@@ -20,14 +20,33 @@ header {
 
 /* Main - вторая строка, разбитая на 2 колонки */
 main {
-    height: calc(100vh - 70px); /* Высота = экран минус header */
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;      /* слева панель, справа карта */
+    align-items: flex-start;
 }
+
 
 /* Сайдбар - первая колонка main */
+
 .filters-sidebar {
     grid-column: 1;
-    overflow-y: auto;
-    background-color: #555555;
+    /* панель просто стоит под меню, не прижата к левому краю */
+    display: flex;
+    justify-content: center;     /* центрируем по колонке */
+    align-items: flex-start;
+    background: transparent;
 }
 
-/* Область для миникарты - вторая колонка main */
+/* внутренний контейнер, в котором лежат кнопки */
+.filters-panel {
+    width: 782px;                /* как в Figma (по линейке) */
+    height: 674px;               /* как на скрине */
+    border: none;                /* убираем зелёную рамку */
+    background: transparent;     /* без белого фона */
+    box-shadow: none;            /* тень даём только кнопкам, не блоку */
+    padding: 0;                  /* отступы мы настроим снизу */
+    margin-top: 60px;    /* отступ вниз от шапки */
+    margin-left: -40px;  /* лёгкий сдвиг влево, чтобы совпасть с макетом */
+    padding: 0;
+}

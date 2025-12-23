@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/global/css/styles.css">
     <title>Smartnades</title>
+
+    <!-- Общие стили -->
+    <link rel="stylesheet" href="../static/global/css/styles.css">
 </head>
 <body>
     <header>
         <a href=""><div class="logo"></div></a>
         <nav>
-            <a href="" class="nav-item" id="nades">Nades</a>
+            <a href="" class="nav-item nav-item--active" id="nades">Nades</a>
             <a href="" class="nav-item" id="setups">Strats</a>
             <a href="" class="nav-item" id="hltv">Favourites</a>
             <a href="" class="nav-item">Log in</a>
@@ -18,17 +20,21 @@
     </header>
 
     <main>
+        <!-- Левая панель фильтров -->
         <aside class="filters-sidebar">
-            <form class="filters-form">
-                <fieldset class="filters-group">
-                     <div class="map-select-container">
+            <div class="filters-panel">
+                <!-- Верхние селекты: Map / Categories -->
+                <div class="map-select-row">
+                    <div class="map-select-container">
                         <button type="button" class="map-toggle" id="map-toggle">
-                            <span>Map</span>
-                            <span class="arrow">▼</span>
+                            <span class="map-label">Mirage</span>
+                            <span class="arrow">
+                                <span class="arrow-line arrow-line-top">⌄</span>
+                                <span class="arrow-line arrow-line-bottom">⌄</span>
+                            </span>
                         </button>
 
                         <div class="map-dropdown" id="map-dropdown">
-                            <button type="button" class="map-option" data-value="none-map">-</button>
                             <button type="button" class="map-option" data-value="mirage">Mirage</button>
                             <button type="button" class="map-option" data-value="inferno">Inferno</button>
                             <button type="button" class="map-option" data-value="dust2">Dust II</button>
@@ -37,8 +43,8 @@
                             <button type="button" class="map-option" data-value="train">Train</button>
                             <button type="button" class="map-option" data-value="nuke">Nuke</button>
                         </div>
-                        
-                        <!-- Скрытый select для формы -->
+
+                        <!-- скрытый select для формы -->
                         <select name="map" id="map-select" class="filter-select">
                             <option value="none-map">-</option>
                             <option value="mirage">Mirage</option>
@@ -50,50 +56,93 @@
                             <option value="nuke">Nuke</option>
                         </select>
                     </div>
-                </fieldset>
 
-                <fieldset class="filters-group">
-                    <div class="radio-group">
-                        <input type="radio" name="side" id="side-ct" value="ct">
-                        <label for="side-ct">CT</label>
+                    <div class="map-select-container">
+                        <button type="button" class="map-toggle" id="category-toggle">
+                            <span>Categories</span>
+                            <span class="arrow">
+                                <span class="arrow-line arrow-line-top">⌄</span>
+                                <span class="arrow-line arrow-line-bottom">⌄</span>
+                            </span>
+                        </button>
+
+                        <div class="map-dropdown" id="category-dropdown">
+                            <button type="button" class="map-option" data-value="all-categories">All</button>
+                            <button type="button" class="map-option" data-value="insta-smokes">Insta Smokes</button>
+                            <button type="button" class="map-option" data-value="executes">Executes</button>
+                            <button type="button" class="map-option" data-value="default">Default</button>
+                            <button type="button" class="map-option" data-value="retake">Retake</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки T / CT -->
+                <div class="side-buttons">
+                    <button type="button" class="side-button active" id="btn-t">T</button>
+                    <button type="button" class="side-button" id="btn-ct">CT</button>
+                </div>
+
+                <!-- Кнопки типов гранат -->
+                <div class="nade-buttons">
+                    <button type="button" class="nade-button active" data-nade="smoke">S</button>
+                    <button type="button" class="nade-button" data-nade="flash">F</button>
+                    <button type="button" class="nade-button" data-nade="molotov">M</button>
+                    <button type="button" class="nade-button" data-nade="he">H</button>
+                </div>
+
+                <!-- Блок текста со скроллом и навигацией -->
+                <div class="info-scroll">   
+
+                    <div class="info-arrow info-arrow-left" id="info-prev">‹</div>
+
+                    <div class="info-scroll-inner">
+                        <div class="info-page active" data-page="1">
+                            <p>SmartNades — это не просто сборник гранат, а ваш ключ к 
+                            тактическому превосходству. Мы учим гранатам с пониманием:
+                            каждая граната имеет четкое объяснение своей цели и пользы,
+                            чтобы вы не заучивали пиксели, а знали, зачем кидаете гранату 
+                            и решали реальные игровые задачи, не тратя деньги впустую.
+                            Здесь только проверенные на про-сцене и высоких рангах
+                            гранаты без лишнего мусора. Исследуйте готовые тактические
+                            «Strats» для взятия позиций и лучшие связки от
+                            профессионалов в разделе «#1 HLTV Sets». Наш проект
+                            постоянно развивается, оставаясь гибким и открытым для
+                            улучшений, чтобы вы всегда были на шаг впереди.</p>
+                        </div>
+                        <div class="info-page" data-page="2">
+                            <p>Текст второй страницы...</p>
+                        </div>
+                        <div class="info-page" data-page="3">
+                            <p>Текст третьей страницы...</p>
+                        </div>
+                        <div class="info-page" data-page="4">
+                            <p>Текст четвёртой страницы...</p>
+                        </div>
+                    </div>
+
+                    <div class="info-arrow info-arrow-right" id="info-next">›</div>
+
+                    <div class="info-scroll-nav">
+                        <div class="info-dot active" data-page="1"></div>
+                        <div class="info-dot" data-page="2"></div>
+                        <div class="info-dot" data-page="3"></div>
+                        <div class="info-dot" data-page="4"></div>
                         
-                        <input type="radio" name="side" id="side-t" value="t">
-                        <label for="side-t">T</label>
                     </div>
-                </fieldset>
-
-                <fieldset class="filters-group">
-                    <div class="radio-group">
-                        <input type="radio" name="nade_type" id="nade-smoke" value="smoke">
-                        <label for="nade-smoke">Smoke</label>
-
-                        <input type="radio" name="nade_type" id="nade-flash" value="flash">
-                        <label for="nade-flash">Flash</label>
-
-                        <input type="radio" name="nade_type" id="nade-molotov" value="molotov">
-                        <label for="nade-molotov">Molotov</label>
-
-                        <input type="radio" name="nade_type" id="nade-he" value="he">
-                        <label for="nade-he">HE</label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="filters-group">
-                    <legend>Timing</legend>
-                    <div class="radio-group">
-                        <input type="radio" name="timing" id="early-timing" value="early">
-                        <label for="early-timing">Early</label>
-
-                        <input type="radio" name="timing" id="mid-timing" value="mid">
-                        <label for="mid-timing">Mid</label>
-
-                        <input type="radio" name="timing" id="late-timing" value="late">
-                        <label for="late-timing">Late</label>
-                    </div>
-                </fieldset>
-            </form>
+                </div>
+            </div>
         </aside>
+
+        <!-- Правая часть (карта) — пока пустая заглушка -->
+        <section class="map-area">
+            <!-- сюда потом добавишь мини-карту из CS2 -->
+        </section>
     </main>
+
+    <!-- Скрипты (у тебя уже есть dropdown.js, можно расширить) -->
     <script src="../static/global/js/dropdown.js"></script>
+    <script src="../static/global/js/side_buttons.js"></script>
+    <script src="../static/global/js/nade_buttons.js"></script>
+    <script src="../static/global/js/scroll.js"></script>
 </body>
 </html>

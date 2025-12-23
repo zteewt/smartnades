@@ -1,54 +1,68 @@
-// static/global/js/dropdown.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const mapToggle = document.getElementById('map-toggle');
     const mapDropdown = document.getElementById('map-dropdown');
-    const mapSelect = document.getElementById('map-select');
-    const mapOptions = document.querySelectorAll('.map-option');
-    
-    // Переключение выпадающего списка
-    mapToggle.addEventListener('click', function() {
-        mapDropdown.classList.toggle('active');
-        mapToggle.classList.toggle('active');
-    });
-    
-    // Выбор карты из списка
-    mapOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const value = this.getAttribute('data-value');
-            const text = this.textContent;
-            
-            // Обновляем текст на кнопке
-            mapToggle.querySelector('span:first-child').textContent = text;
-            
-            // Обновляем скрытый select
-            mapSelect.value = value;
-            
-            // Закрываем выпадающий список
-            mapDropdown.classList.remove('active');
-            mapToggle.classList.remove('active');
-            
-            // Помечаем выбранную опцию
-            mapOptions.forEach(opt => opt.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            // Триггерим событие изменения (для будущей фильтрации)
-            mapSelect.dispatchEvent(new Event('change'));
+
+    const categoryToggle = document.getElementById('category-toggle');
+    const categoryDropdown = document.getElementById('category-dropdown');
+
+    // универсальная функция для открытия/закрытия
+    function toggleDropdown(button, dropdown) {
+        const isOpen = dropdown.classList.toggle('active');
+        button.classList.toggle('active', isOpen);
+    }
+
+    // клик по кнопке Map
+    if (mapToggle && mapDropdown) {
+        mapToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // чтобы клик не ушёл на document
+            toggleDropdown(mapToggle, mapDropdown);
+            // закрываем второй дропдаун
+            categoryDropdown.classList.remove('active');
+            categoryToggle.classList.remove('active');
         });
-    });
-    
-    // Закрытие при клике вне области
-    document.addEventListener('click', function(event) {
-        if (!mapToggle.contains(event.target) && !mapDropdown.contains(event.target)) {
+    }
+
+    // клик по кнопке Categories
+    if (categoryToggle && categoryDropdown) {
+        categoryToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(categoryToggle, categoryDropdown);
+            // закрываем Map
             mapDropdown.classList.remove('active');
             mapToggle.classList.remove('active');
-        }
+        });
+    }
+
+    // клик по пункту карты — меняем текст на кнопке
+    mapDropdown?.addEventListener('click', (e) => {
+        const option = e.target.closest('.map-option');
+        if (!option) return;
+        e.stopPropagation();
+
+        const value = option.textContent.trim();
+        mapToggle.querySelector('span').textContent = value;
+
+        mapDropdown.classList.remove('active');
+        mapToggle.classList.remove('active');
     });
-    
-    // Закрытие при нажатии Escape
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            mapDropdown.classList.remove('active');
-            mapToggle.classList.remove('active');
-        }
+
+    categoryDropdown?.addEventListener('click', (e) => {
+    const option = e.target.closest('.map-option');
+    if (!option) return;
+    e.stopPropagation();
+
+    const value = option.textContent.trim();
+    categoryToggle.querySelector('span').textContent = value;
+
+    categoryDropdown.classList.remove('active');
+    categoryToggle.classList.remove('active');
+});
+
+    // клик по документу вне дропдаунов — закрыть всё
+    document.addEventListener('click', () => {
+        mapDropdown?.classList.remove('active');
+        mapToggle?.classList.remove('active');
+        categoryDropdown?.classList.remove('active');
+        categoryToggle?.classList.remove('active');
     });
 });

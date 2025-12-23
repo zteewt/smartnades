@@ -4,20 +4,6 @@
     margin-bottom: 10px;
 }
 
-.map-toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 12px;
-    background: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
-
 .map-toggle .arrow {
     transition: transform 0.3s ease;
     font-size: 18px;
@@ -33,7 +19,7 @@
     left: 0;
     right: 0;
     background: white;
-    border-radius: 5px;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     max-height: 0;
     overflow: hidden;
@@ -149,4 +135,282 @@
     background-color: #3c3c3c; /* Подсветка при наведении */
     color: white;
 }
+
+
+
+
+
+/* Компоненты выбора карты */
+
+.map-select-row {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 30px;
+}
+
+.map-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    min-width: 190px;
+    padding: 12px 40px; 
+    background: #ffffff;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.45),
+        0 -6px 12px rgba(255, 255, 255, 0.35);
+}
+
+.map-toggle .arrow {
+    position: absolute;
+    right: 24px;
+    top: 40%;
+    transform: translateY(-50%);   /* всегда по центру по вертикали */
+    width: 14px;
+    height: 14px;   
+}
+
+.arrow-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 700;
+    color: #000;  
+}
+
+.arrow-line-top {
+    top: 0;
+    color: #000;
+}
+
+.arrow-line-bottom {
+    top: 4px;
+}
+
+
+.map-toggle.active .arrow {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+}
+
+.map-label {
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+/* -------------------- */
+
+
+
+/* Компоненты выбора стороны и гранат */
+
+.side-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.side-button {
+    min-width: 110px;
+    padding: 10px 32px;
+    border-radius: 999px;
+    border: none;
+    background: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.45),
+        0 -6px 12px rgba(255, 255, 255, 0.35);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.1s ease;
+}
+
+.side-button.active {
+    background: #1E202E;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow:
+        inset 0 6px 12px rgba(0, 0, 0, 0.6),
+        inset 0 -6px 12px rgba(255, 255, 255, 0.1);
+    transform: translateY(1px);
+}
+
+.nade-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.nade-button {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    border: none;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.45),
+        0 -6px 12px rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #000;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.1s ease,
+        border-color 0.25s ease;
+}
+
+.nade-button.active {
+    background: #1E202E;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow:
+        inset 0 6px 12px rgba(0, 0, 0, 0.6),
+        inset 0 -6px 12px rgba(255, 255, 255, 0.1);
+    transform: translateY(1px);
+}
+
+.side-button {
+    min-width: 110px;
+    padding: 10px 32px;
+    border-radius: 999px;
+    border: none;
+    background: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.45),
+        0 -6px 12px rgba(255, 255, 255, 0.35);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.1s ease;
+}
+
+/* активная сторона: вдавленная и с рамкой */
+.side-button.active {
+    background: #1E202E;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow:
+        inset 0 6px 12px rgba(0, 0, 0, 0.6),
+        inset 0 -6px 12px rgba(255, 255, 255, 0.1);
+    transform: translateY(1px);
+}
+/* -------------------- */
+
+
+
+/* Скролл */
+
+
+.info-scroll {
+    position: relative;
+    margin-top: 10px;
+    height: 260px;
+    border-radius: 20px;
+    border: 2px solid rgba(128, 255, 128, 0.8);
+    padding: 20px 70px 50px 70px;
+    overflow: hidden;
+    color: #000;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.info-scroll-inner {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Навигация снизу */
+.info-scroll-nav {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.info-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #50AD5E;
+    font-size: 50px;
+    z-index: 2;
+}
+
+.info-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #50AD5E;
+    cursor: pointer;
+}
+
+.info-dot.active {
+    background: #50AD5E;
+}
+
+.info-page {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    position: absolute;
+    inset: 0;                /* растянуть по контейнеру */
+    overflow-y: auto;
+    padding-right: 8px; 
+}
+
+.info-page.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.info-arrow-left {
+    left: 24px;
+}
+
+.info-arrow-right {
+    right: 24px;
+}
+
+/* -------------------- */
+
+
 

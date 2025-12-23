@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('layout.css');
 @import url('components.css');
 @import url('header.css');
-@import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 
 /* Глобальные сбросы и базовые стили */
@@ -14,4 +14,12 @@
 html, body {
     height: 100%;
     font-family: 'Sansation', sans-serif;
+    /* background: url('/media/pics/image.png') no-repeat; */
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
 }
