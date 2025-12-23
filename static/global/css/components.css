@@ -221,9 +221,9 @@
 }
 
 .side-button {
-    min-width: 110px;
+    min-width: 90px;
     padding: 10px 32px;
-    border-radius: 999px;
+    border-radius: 12px;
     border: none;
     background: #ffffff;
     font-size: 18px;
@@ -290,25 +290,6 @@
     transform: translateY(1px);
 }
 
-.side-button {
-    min-width: 110px;
-    padding: 10px 32px;
-    border-radius: 999px;
-    border: none;
-    background: #ffffff;
-    font-size: 18px;
-    cursor: pointer;
-    color: #000;
-    box-shadow:
-        0 10px 20px rgba(0, 0, 0, 0.45),
-        0 -6px 12px rgba(255, 255, 255, 0.35);
-    transition:
-        background-color 0.25s ease,
-        color 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.1s ease;
-}
 
 /* активная сторона: вдавленная и с рамкой */
 .side-button.active {
@@ -331,13 +312,20 @@
     position: relative;
     margin-top: 10px;
     height: 260px;
-    border-radius: 20px;
-    border: 2px solid rgba(128, 255, 128, 0.8);
+    border-radius: 24px;
+
+    /* фон блока, как в макете */
+    background: rgba(30, 32, 46, 0.67);   /* #1E202E, 67% */
+
+    /* рамка тем же цветом */
+    border: 1px solid rgba(255, 255, 255, 0.85);
+
     padding: 20px 70px 50px 70px;
     overflow: hidden;
-    color: #000;
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 15px;
     line-height: 1.4;
+    text-align: center;
 }
 
 .info-scroll-inner {
@@ -410,7 +398,173 @@
     right: 24px;
 }
 
+
+.info-highlight {
+    color: #58ff7d;
+    font-weight: 600;
+    /*text-shadow: 0 0 6px rgba(88, 255, 125, 0.75);    --Свечение--     */
+}
+
+.info-title {
+    font-size: 24px;      /* больше, чем обычный текст */
+    font-weight: 900;     /* более жирный шрифт */
+    color: #58ff7d;       /* тот же зелёный, что и подсветка */
+}
+
 /* -------------------- */
 
 
 
+
+/* Карта */
+
+
+
+.map-area {
+    grid-column: 2 / -1;         /* если main у тебя как grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 900px;                /* подгони под макет */
+    height: 650px;
+    margin-top: 30px;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Точка-граната на карте */
+.nade-point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 14px;   
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.nade-icon {
+    pointer-events: none;
+}
+
+/* Пунктирная линия */
+.nade-line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.nade-line.visible {
+    opacity: 0.8;
+}
+
+.nade-line line {
+    stroke: #ffffff;
+    stroke-width: 0.3;       /* было 2 — делаем тоньше */
+    stroke-dasharray: 1 0.8;   /* короткий штрих и короткий пробел */
+    stroke-linecap: round;   /* закруглённые концы штрихов */
+}
+
+
+
+
+/* Футер */
+
+
+.site-footer {
+    grid-column: 1 / -1;
+    background-color: #1E202E;
+    color: #ffffff;
+    padding: 24px 80px;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* левая часть с логотипом */
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 200px;
+    height: 80px;
+    background: url('/media/pics/logo.png') no-repeat center/contain;
+}
+
+/* центральное меню */
+.footer-nav {
+    display: flex;
+    gap: 80px;
+    font-size: 18px;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+}
+
+.footer-link:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: #fff;
+}
+
+/* правая часть: почта + соцсети */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.footer-contact-email {
+    white-space: nowrap;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-social {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-decoration: none;
+    color: #ffffff;
+}

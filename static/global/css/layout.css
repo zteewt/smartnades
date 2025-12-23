@@ -1,8 +1,8 @@
 /* Основной Grid контейнер */
 body {
     display: grid;
-    grid-template-rows: 125px 1fr; /* Две строки: header и main */
-    grid-template-columns: 45% 1fr auto; /* Колонки как в header */ 
+    grid-template-rows: 125px 1fr auto; 
+    grid-template-columns: 45% 1fr auto;
     min-height: 100vh;
     margin: 0;
 }

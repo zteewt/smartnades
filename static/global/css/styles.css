@@ -14,7 +14,7 @@
 html, body {
     height: 100%;
     font-family: 'Sansation', sans-serif;
-    /* background: url('/media/pics/image.png') no-repeat; */
+    background: url('/media/pics/background.svg') no-repeat;
 }
 
 button,
