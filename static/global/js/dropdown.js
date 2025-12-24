@@ -61,8 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryDropdown.classList.remove('active');
       categoryToggle.classList.remove('active');
 
-      // ВАЖНО: обновляем глобальную переменную
-      currentCategory = option.dataset.value;   // 'all', 'insta-smokes', ...
+      currentCategory = option.dataset.value;
       renderNadesForMap(currentMap);
     });
   }

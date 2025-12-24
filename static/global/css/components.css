@@ -432,12 +432,42 @@
     width: 900px;                /* подгони под макет */
     height: 650px;
     margin-top: 30px;
+    overflow: hidden;
 }
 
 .map-image {
-    width: 100%;
-    height: 100%;
-    display: block;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.map-image--hidden {
+  opacity: 0;
+}
+
+.nades-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
+}
+
+.nades-layer--fading {
+  opacity: 0;
+}
+
+/* сами элементы внутри — кликабельные */
+.nades-layer .nade-point,
+.nades-layer .nade-variations-on-map {
+  pointer-events: auto;
+}
+
+/* линии должны пропускать клики сквозь себя */
+.nades-layer .nade-line {
+  pointer-events: none;
 }
 
 /* Точка-граната на карте */
@@ -465,25 +495,97 @@
 /* Пунктирная линия */
 .nade-line {
     position: absolute;
-    inset: 0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s ease;
+    /*opacity: 0;
+    transition: opacity 0.25s ease;*/ 
 }
 
-.nade-line.visible {
+/* .nade-line.visible {
     opacity: 0.8;
+} */
+
+
+.nade-line__segment {
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
+.nade-line__segment.active {
+  opacity: 0.9;
+}
+
+.nade-variations-count {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: #1e202e;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.nade-variations-on-map {
+  position: absolute;      /* как было в JS */
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transform: translate(-50%, 4px) scale(0.95);
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+
+.nade-variations-on-map--open {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  pointer-events: auto;
+}
+
+.nade-variation-map-btn {
+  width: 22px;              /* меньше, чем 32px у .nade-point */
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.75);  /* как у .nade-point, можно скопировать точно */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 11px;          /* меньше шрифт */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+  padding: 0;
+}
+
+/* лёгкий ховер, чтобы было понятно, что это кликабельно */
+.nade-variation-map-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.nade-point--dimmed {
+  opacity: 0.4;
+}
+
+/*
 .nade-line line {
     stroke: #ffffff;
-    stroke-width: 0.3;       /* было 2 — делаем тоньше */
-    stroke-dasharray: 1 0.8;   /* короткий штрих и короткий пробел */
-    stroke-linecap: round;   /* закруглённые концы штрихов */
-}
-
+    stroke-width: 0.3;       
+    stroke-dasharray: 1 0.8; 
+    stroke-linecap: round;   
+*/
 
 
 
@@ -576,12 +678,16 @@
 .nade-modal {
     position: fixed;
     inset: 0;
-    display: none;              /* по умолчанию скрыта */
+    display: block;              /* по умолчанию скрыта */
     z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.18s ease-out;
 }
 
 .nade-modal--open {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .nade-modal__backdrop {
@@ -592,8 +698,8 @@
 
 .nade-modal__content {
     position: relative;
-    max-width: 1200px;
-    height: 80vh;
+    max-width: 1600px;
+    height: 90vh;
     margin: 40px auto;
     background: #1E202E;
     border-radius: 16px;
@@ -601,6 +707,11 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.7);
     display: flex;
     flex-direction: column;
+    transform: translateY(12px);
+    opacity: 0;
+    transition:
+        opacity 0.18s ease-out,
+        transform 0.18s ease-out;
 }
 
 .nade-modal__close {
@@ -623,6 +734,12 @@
     height: 100%;
 }
 
+.nade-modal--open .nade-modal__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
 /* Левая часть */
 
 .nade-modal__video {
@@ -636,7 +753,7 @@
 .nade-modal__video video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 12px;
 }
 
@@ -687,4 +804,27 @@
 
 .nade-meta__item-value {
     font-weight: 600;
+}
+
+
+.nade-modal-variations {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.nade-variation-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #ffffff88;
+  background: transparent;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nade-variation-btn.active {
+  background: #50ad5e;
+  border-color: #50ad5e;
 }

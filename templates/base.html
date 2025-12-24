@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Smartnades</title>
+        <title>SmartNades</title>
 
         <!-- Общие стили -->
         <link rel="stylesheet" href="../static/global/css/styles.css">
@@ -59,7 +59,7 @@
 
                         <div class="map-select-container">
                             <button type="button" class="map-toggle" id="category-toggle">
-                                <span class="category-label">Categories</span>
+                                <span class="category-label">Default</span>
                                 <span class="arrow">
                                     <span class="arrow-line arrow-line-top">⌄</span>
                                     <span class="arrow-line arrow-line-bottom">⌄</span>
@@ -67,10 +67,9 @@
                             </button>
 
                             <div class="map-dropdown" id="category-dropdown">
-                                <button type="button" class="map-option" data-value="all">All</button>
+                                <button type="button" class="map-option" data-value="default">Default</button>
                                 <button type="button" class="map-option" data-value="insta-smokes">Insta Smokes</button>
                                 <button type="button" class="map-option" data-value="executes">Executes</button>
-                                <button type="button" class="map-option" data-value="default">Default</button>
                                 <button type="button" class="map-option" data-value="retake">Retake</button>
                             </div>
                         </div>
@@ -139,9 +138,12 @@
         <section class="map-area">
             <div class="map-wrapper">
                 <img src="/media/minimaps/map_mirage.svg"
-                    alt="Mirage minimap"
-                    class="map-image"
-                    id="map-image">
+                     alt="Mirage minimap"
+                     class="map-image"
+                     id="map-image">
+
+                <!-- слой для точек/линий -->
+                <div class="nades-layer" id="nades-layer"></div>
             </div>
         </section>
         </main>
@@ -174,34 +176,20 @@
 
        <div class="nade-modal" id="nade-modal">
         <div class="nade-modal__backdrop" id="nade-modal-backdrop"></div>
-
         <div class="nade-modal__content">
-            <button class="nade-modal__close" id="nade-modal-close">×</button>
-
+            <button class="nade-modal__close" id="nade-modal-close">&times;</button>
             <div class="nade-modal__layout">
-            <!-- Левая часть: видео -->
             <div class="nade-modal__video">
-                <!-- пока заглушка; потом заменишь на <video> или iframe -->
                 <video id="nade-video" controls preload="metadata">
                 <source id="nade-video-source" src="" type="video/mp4">
-                Ваш браузер не поддерживает видео.
                 </video>
             </div>
-
-            <!-- Правая часть -->
             <div class="nade-modal__right">
-                <!-- верхний блок с описанием -->
                 <div class="nade-modal__info">
                 <h2 class="nade-modal__title" id="nade-title">Nade title</h2>
-                <p class="nade-modal__description" id="nade-description">
-                    Описание гранаты.
-                </p>
+                <p class="nade-modal__description" id="nade-description"></p>
                 </div>
-
-                <!-- нижний блок с метой -->
-                <div class="nade-modal__meta" id="nade-meta">
-                <!-- сюда будем ставить мета‑инфу -->
-                </div>
+                <div class="nade-modal__meta" id="nade-meta"></div>
             </div>
             </div>
         </div>
