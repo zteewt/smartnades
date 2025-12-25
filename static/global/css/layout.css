@@ -21,9 +21,7 @@ header {
 /* Main - вторая строка, разбитая на 2 колонки */
 main {
     grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;      /* слева панель, справа карта */
-    align-items: flex-start;
+    display: block;
 }
 
 
@@ -49,4 +47,98 @@ main {
     margin-top: 60px;    /* отступ вниз от шапки */
     margin-left: -40px;  /* лёгкий сдвиг влево, чтобы совпасть с макетом */
     padding: 0;
+}
+
+
+
+/* все вкладки по умолчанию скрыты */
+.tab-content {
+  display: none;
+}
+
+/* активная вкладка Nades — двухколоночная сетка */
+.tab-content.tab-content--active[data-tab-content="nades"] {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+}
+
+/* активные Strats и Favorites — просто блок */
+.tab-content.tab-content--active:not([data-tab-content="nades"]) {
+  display: block;
+}
+
+
+/* Favorites */
+/* Базовый контейнер вкладки без карты */
+.tab-content.tab-content--active:not([data-tab-content="nades"]) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 180px); /* под шапку и футер */
+}
+
+/* Карточка-заглушка */
+.placeholder-card {
+  max-width: 560px;
+  padding: 32px 36px;
+  border-radius: 24px;
+  background: rgba(12, 14, 24, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: #fff;
+}
+
+/* Заголовок и текст */
+.placeholder-card__title {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.placeholder-card__text {
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+/* Кнопка */
+.placeholder-card__button {
+  padding: 12px 32px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.45),
+    0 -6px 12px rgba(255, 255, 255, 0.35);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.1s ease;
+}
+
+.placeholder-card__button:hover {
+  background: #1E202E;
+  color: #fff;
+  box-shadow:
+    inset 0 6px 12px rgba(0, 0, 0, 0.6),
+    inset 0 -6px 12px rgba(255, 255, 255, 0.1);
+  transform: translateY(1px);
+}
+
+/* Надпись Coming soon */
+.placeholder-card__tagline {
+  margin-top: 8px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #50AD5E;
+  opacity: 0.9;
 }
