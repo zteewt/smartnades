@@ -117,6 +117,12 @@ const nades = [
         from: { x: 69, y: 44.62 },
         travelTime: '3.2s',
         videoUrl: '/media/nades_videos/test.MOV',
+      },
+      {
+        id: 'mirage-smoke-wind-var3',
+        from: { x: 86.89, y: 30.31 },
+        travelTime: '10.2s',
+        videoUrl: '/media/nades_videos/test.MOV',
       }
     ]
   },
@@ -139,6 +145,45 @@ const nades = [
       }
     ]
   },
+  {
+    id: 'inferno-he-1',
+    map: 'inferno',
+    side: 'ct',
+    type: 'he',
+    category: 'default',
+    to:   { x: 42.78, y: 50.15 },
+    label: 'H',
+    title: 'Banan he from car',
+    description: 'Взрывает деревяшки с кара на инферно',
+    variations: [
+      {
+        id: 'inferno-he-1',
+        from: { x: 50.56, y: 34.46 },
+        travelTime: '2.2s',
+        videoUrl: '/media/nades_videos/test.MOV',
+      }
+    ]
+  },
+  {
+    id: 'inferno-molotov-1',
+    map: 'inferno',
+    side: 't',
+    type: 'molotov',
+    category: 'executes',
+    to:   { x: 50.56, y: 34.46 },
+    label: 'M',
+    title: 'Molotov to car',
+    description: 'Молик на кар',
+    variations: [
+      {
+        id: 'inferno-molotov-1',
+        from: { x: 45.33, y: 54.62 },
+        travelTime: '1.7s',
+        videoUrl: '/media/nades_videos/test.MOV',
+      }
+    ]
+  }
+  
 ];
 
 let favoritesNades = [];
@@ -793,6 +838,12 @@ document.addEventListener('DOMContentLoaded', () => {
         favMapToggle.disabled = true;
         favMapDropdown.innerHTML = '';
         currentMap = only;
+
+        const favImg = document.getElementById('fav-map-image');
+        if (favImg && favImg.dataset.map !== only) {
+          favImg.src = `/media/minimaps/map_${only}.svg`;
+          favImg.dataset.map = only;
+        }        
       } else {
         favMapToggle.classList.remove('single-value');
         favMapToggle.disabled = false;
@@ -919,6 +970,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeNadeTypes = [meta.types[0]];
       }
 
+      lastRenderedIds = [];
       renderNadesForMap(currentMap);
 
       // --- подсветка active для типов гранат ---
