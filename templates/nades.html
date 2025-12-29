@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nades - SmartNades</title>
+    <link rel="stylesheet" href="../static/global/css/styles.css">
+</head>
+<body>
+<header>
+    <a href="/templates/nades.html"><div class="logo"></div></a>
+    <nav>
+        <a href="/templates/nades.html" class="nav-item nav-item--active">Nades</a>
+        <a href="/templates/strats.html" class="nav-item">Strats</a>
+        <a href="/templates/favorites.html" class="nav-item">Favourites</a>
+        <a href="#" class="nav-item">Log in</a>
+    </nav>
+</header>
+
+<main>
+    <!-- Полные фильтры + карта -->
+    <div class="page-content page-content--nades">
+        <!-- Левая панель фильтров -->
+        <aside class="filters-sidebar">
+            <div class="filters-panel">
+                <div class="map-select-row">
+                    <div class="map-select-container">
+                        <button type="button" class="map-toggle" id="map-toggle">
+                            <span class="map-label" id="map-label">Mirage</span>
+                            <span class="arrow">
+                                <span class="arrow-line arrow-line-top">⌄</span>
+                                <span class="arrow-line arrow-line-bottom">⌄</span>
+                            </span>
+                        </button>
+                        <div class="map-dropdown" id="map-dropdown">
+                            <button type="button" class="map-option" data-value="mirage">Mirage</button>
+                            <button type="button" class="map-option" data-value="inferno">Inferno</button>
+                            <button type="button" class="map-option" data-value="dust2">Dust II</button>
+                            <button type="button" class="map-option" data-value="ancient">Ancient</button>
+                            <button type="button" class="map-option" data-value="overpass">Overpass</button>
+                            <button type="button" class="map-option" data-value="train">Train</button>
+                            <button type="button" class="map-option" data-value="nuke">Nuke</button>
+                        </div>
+                        <select name="map" id="map-select" class="filter-select">
+                            <option value="none-map">-</option>
+                            <option value="mirage">Mirage</option>
+                            <option value="inferno">Inferno</option>
+                            <option value="dust2">Dust II</option>
+                            <option value="ancient">Ancient</option>
+                            <option value="overpass">Overpass</option>
+                            <option value="train">Train</option>
+                            <option value="nuke">Nuke</option>
+                        </select>
+                    </div>
+                    <div class="map-select-container">
+                        <button type="button" class="map-toggle" id="category-toggle">
+                            <span class="category-label" id="category-label">Default</span>
+                            <span class="arrow">
+                                <span class="arrow-line arrow-line-top">⌄</span>
+                                <span class="arrow-line arrow-line-bottom">⌄</span>
+                            </span>
+                        </button>
+                        <div class="map-dropdown" id="category-dropdown">
+                            <button type="button" class="map-option" data-value="default">Default</button>
+                            <button type="button" class="map-option" data-value="insta-smokes">Insta Smokes</button>
+                            <button type="button" class="map-option" data-value="executes">Executes</button>
+                            <button type="button" class="map-option" data-value="retake">Retake</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-buttons">
+                    <button type="button" class="side-button active" id="btn-t" data-side="t">T</button>
+                    <button type="button" class="side-button" id="btn-ct" data-side="ct">CT</button>
+                </div>
+                <div class="nade-buttons">
+                    <button type="button" class="nade-button active" data-nade="smoke">S</button>
+                    <button type="button" class="nade-button" data-nade="flash">F</button>
+                    <button type="button" class="nade-button" data-nade="molotov">M</button>
+                    <button type="button" class="nade-button" data-nade="he">H</button>
+                </div>
+                <!-- Info-scroll: 4 страницы -->
+                <div class="info-scroll">
+                    <div class="info-arrow info-arrow-left" id="info-prev">‹</div>
+                    <div class="info-scroll-inner">
+                        <div class="info-page active" data-page="1">
+                            <p><span class="info-title">Nades</span> — это не просто <span class="info-highlight">сборник гранат</span>, а ваш ключ к <span class="info-highlight">тактическому превосходству</span>. Мы учим гранатам с <span class="info-highlight">пониманием</span>: каждая граната имеет <span class="info-highlight">четкое объяснение</span> своей цели и пользы, чтобы вы <span class="info-highlight">не заучивали</span> пиксели, а знали, <span class="info-highlight">зачем</span> кидаете гранату и решали реальные игровые задачи, не тратя деньги впустую. Здесь только <span class="info-highlight">проверенные</span> на про-сцене и высоких рангах гранаты без лишнего мусора.</p>
+                        </div>
+                        <div class="info-page" data-page="2"><p>Текст второй страницы...</p></div>
+                        <div class="info-page" data-page="3"><p>Текст третьей страницы...</p></div>
+                        <div class="info-page" data-page="4"><p>Текст четвёртой страницы...</p></div>
+                    </div>
+                    <div class="info-arrow info-arrow-right" id="info-next">›</div>
+                    <div class="info-scroll-nav">
+                        <div class="info-dot active" data-page="1"></div>
+                        <div class="info-dot" data-page="2"></div>
+                        <div class="info-dot" data-page="3"></div>
+                        <div class="info-dot" data-page="4"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Карта -->
+        <section class="map-area">
+            <div class="map-wrapper">
+                <img src="/media/minimaps/map_mirage.svg" alt="Mirage minimap" class="map-image" id="map-image" data-map="mirage">
+                <div class="nades-layer" id="nades-layer"></div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-left"><div class="footer-logo"></div></div>
+        <nav class="footer-nav">
+            <a href="#" class="footer-link">О проекте</a>
+            <a href="#" class="footer-link">Поддержка</a>
+            <a href="#" class="footer-link">Донаты</a>
+        </nav>
+        <div class="footer-right">
+            <div class="footer-contact"><span class="footer-contact-email">Smartnades@gmail.com</span></div>
+            <div class="footer-socials">
+                <a href="#" class="footer-social">Tg</a>
+                <a href="#" class="footer-social">Vk</a>
+                <a href="#" class="footer-social">X</a>
+                <a href="#" class="footer-social">Yt</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка -->
+<div class="nade-modal" id="nade-modal">
+    <div class="nade-modal__backdrop" id="nade-modal-backdrop"></div>
+    <div class="nade-modal__content">
+        <button class="nade-modal__close" id="nade-modal-close">&times;</button>
+        <div class="nade-modal__layout">
+            <div class="nade-modal__video">
+                <video id="nade-video" controls preload="metadata">
+                    <source id="nade-video-source" src="" type="video/mp4">
+                </video>
+            </div>
+            <div class="nade-modal__right">
+                <div class="nade-modal__info">
+                    <h2 class="nade-modal__title" id="nade-title">Nade title</h2>
+                    <button class="nade-modal__fav-btn" id="nade-fav-btn">Добавить в избранное</button>
+                    <p class="nade-modal__description" id="nade-description"></p>
+                </div>
+                <div class="nade-modal__meta" id="nade-meta"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Все JS (кроме tabs.js) -->
+<script src="../static/global/js/map.js"></script>
+<script src="../static/global/js/dropdown.js"></script>
+<script src="../static/global/js/side_buttons.js"></script>
+<script src="../static/global/js/scroll.js"></script>
+<script>
+    window.currentTab = 'nades';
+</script>
+</body>
+</html>

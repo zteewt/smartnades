@@ -1,44 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Info slider (стрелки и точки) ---
-    const pages = Array.from(document.querySelectorAll('.info-page'));
-    const dots  = Array.from(document.querySelectorAll('.info-dot'));
-    const prev  = document.getElementById('info-prev');
-    const next  = document.getElementById('info-next');
+  const scrollBlocks = document.querySelectorAll('.info-scroll');
 
-    if (!pages.length || !dots.length) return;
+  scrollBlocks.forEach(block => {
+    const pages = block.querySelectorAll('.info-page');
+    const dots  = block.querySelectorAll('.info-dot');
+    const prev  = block.querySelector('.info-arrow-left');
+    const next  = block.querySelector('.info-arrow-right');
 
-    let current = 1;
+    if (!pages.length) return;
 
-    function showPage(page) {
-        // нормализуем номер (циклический переход)
-        const total = pages.length;
-        if (page < 1) page = total;
-        if (page > total) page = 1;
-        current = page;
+    let currentIndex = 0;
 
-        pages.forEach(p => {
-            const n = Number(p.dataset.page);
-            p.classList.toggle('active', n === current);
-            if (n === current) p.scrollTop = 0;
-        });
-
-        dots.forEach(d => {
-            const n = Number(d.dataset.page);
-            d.classList.toggle('active', n === current);
-        });
+    function setActive(index) {
+      pages.forEach((p, i) => {
+        p.classList.toggle('active', i === index);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
     }
 
-    // старт: первая страница
-    showPage(1);
+    if (prev) {
+      prev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nextIndex = (currentIndex - 1 + pages.length) % pages.length;
+        setActive(nextIndex);
+      });
+    }
 
-    prev?.addEventListener('click', () => showPage(current - 1));
-    next?.addEventListener('click', () => showPage(current + 1));
+    if (next) {
+      next.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nextIndex = (currentIndex + 1) % pages.length;
+        setActive(nextIndex);
+      });
+    }
 
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const page = Number(dot.dataset.page);
-            if (!page) return;
-            showPage(page);
-        });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setActive(i);
+      });
     });
+
+    // стартовое состояние
+    setActive(0);
+  });
 });

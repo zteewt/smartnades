@@ -17,16 +17,13 @@ header {
     background-color: #1E202E;
 }
 
-
 /* Main - вторая строка, разбитая на 2 колонки */
 main {
     grid-column: 1 / -1;
     display: block;
 }
 
-
 /* Сайдбар - первая колонка main */
-
 .filters-sidebar {
     grid-column: 1;
     /* панель просто стоит под меню, не прижата к левому краю */
@@ -49,34 +46,61 @@ main {
     padding: 0;
 }
 
-
-
-/* все вкладки по умолчанию скрыты */
-.tab-content {
+.page-content {
   display: none;
 }
 
-/* активная вкладка Nades — двухколоночная сетка */
-.tab-content.tab-content--active[data-tab-content="nades"] {
+/* активная Nades — двухколоночная сетка */
+.page-content--nades {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: flex-start;
 }
 
-/* активные Strats и Favorites — просто блок */
-.tab-content.tab-content--active:not([data-tab-content="nades"]) {
-  display: block;
+/* активные Favorites и Strats — просто блок */
+.page-content--favorites {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  position: relative;
 }
 
-
-/* Favorites */
-/* Базовый контейнер вкладки без карты */
-.tab-content.tab-content--active:not([data-tab-content="nades"]) {
+/* Strats — оставляем заглушку по центру */
+.page-content--strats {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 180px); /* под шапку и футер */
+  min-height: calc(100vh - 180px);
 }
+
+
+#favorites-empty-card {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  padding: 24px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+}
+
+
+#favorites-empty-card.placeholder-card {
+  max-width: 560px;
+  width: min(560px, 100%);
+}
+
+#favorites-empty-card[style*="display: none"],
+#favorites-empty-card[style*="display:none"] {
+  pointer-events: none;
+}
+
+
+
 
 /* Карточка-заглушка */
 .placeholder-card {
@@ -112,6 +136,7 @@ main {
   border: none;
   background: #ffffff;
   color: #000;
+  text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   box-shadow:
@@ -141,4 +166,30 @@ main {
   text-transform: uppercase;
   color: #50AD5E;
   opacity: 0.9;
+}
+
+
+.page-content--favorites{
+  position: relative; /* чтобы absolute считался от блока Favorites */
+}
+
+.favorites-empty-overlay{
+  position: absolute;
+  inset: 0;
+  display: none;              /* JS включает */
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+  box-sizing: border-box;
+  z-index: 10;
+
+  background: rgba(0,0,0,.25);
+  backdrop-filter: blur(2px);
+}
+
+/* Окошко фиксируем по ширине */
+.favorites-empty-overlay .placeholder-card{
+  width: min(560px, 100%);
+  max-width: 560px;
 }
